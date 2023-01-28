@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {MainHttpService} from "./services/main-http.service";
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,12 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'generic-demo';
+  constructor(
+    private http: MainHttpService
+  ) {
+  }
+
+  login(): void {
+    this.http.login('admin', '123123').subscribe();
+  }
 }

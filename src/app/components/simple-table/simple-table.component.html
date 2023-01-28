@@ -1,0 +1,28 @@
+<p class="label">{{ config?.label }}</p>
+<table>
+  <thead>
+    <tr>
+      <th *ngFor="let header of config?.fields">
+        <app-table-header
+          [globalOrderConfig]="sortConfig"
+          [field]="header"
+          (onOrder)="onOrderEvent($event)"
+        ></app-table-header>
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let row of config?.data">
+      <td *ngFor="let field of config?.fields">
+        <ng-container *ngIf="templateRef(field) as templateRef; else simple">
+          <ng-container
+            [ngTemplateOutlet]="templateRef"
+            [ngTemplateOutletContext]="getTemplateContext(field, row[field])">
+          </ng-container>
+        </ng-container>
+
+        <ng-template #simple>{{ row[field] }}</ng-template>
+      </td>
+    </tr>
+  </tbody>
+</table>

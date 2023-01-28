@@ -1,0 +1,41 @@
+:host {
+  .label {
+    font-size: 32px;
+    font-weight: bold;
+  }
+
+  table {
+    border: 1px solid gray;
+    border-radius: 8px;
+  }
+
+  tbody {
+    display: block;
+    height: 1000px;
+    overflow: auto;
+
+    tr {
+      height: 50px;
+
+      td {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+
+      &:nth-child(2n) {
+        background-color: rgba(169, 169, 169, 0.24);
+      }
+    }
+  }
+
+  thead, tbody tr {
+    display: table;
+    width: 100%;
+    table-layout: fixed;
+  }
+
+  thead {
+    width: calc( 100% - 1em );
+  }
+}

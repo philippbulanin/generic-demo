@@ -1,0 +1,11 @@
+<app-simple-table
+  [config]="tableConfig$ | async"
+  (onSort)="sortTable($event)"
+></app-simple-table>
+
+<!-- You can get this template by #price reference using @ViewChild decorator -->
+<ng-template #price let-price="price">
+  <div>
+    {{ price | currency }}
+  </div>
+</ng-template>
